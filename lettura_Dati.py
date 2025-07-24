@@ -15,6 +15,13 @@ class Agent:
         self.name = name
         self.tasks = [Task(name, i + 1, r) for i, r in enumerate(task_resources)]
 
+    def cost(self, allocation):
+        """
+        Calcola il costo medio dell’agente come media dei time slot assegnati ai suoi task.
+        """
+        slots = [allocation[(self.name, t.index)] for t in self.tasks if (self.name, t.index) in allocation]
+        return sum(slots) / len(slots) if slots else float('inf')
+
 def load_agents_data(base_dir):
     agents = []
     slot_capacities = None
