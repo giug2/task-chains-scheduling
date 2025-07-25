@@ -1,30 +1,35 @@
-from lettura_Dati import load_agents_data
-from greedy import greedy_allocation_round_robin, print_allocation, evaluate_agent_costs
+from loader import load_instance
+from greedy import greedy_allocation_round_robin, evaluate_agent_costs, print_allocation
 from local_search import local_search_critical_agent
 
 
-# Caricamento dati
-agents, slot_capacities = load_agents_data("MLE")
+# Carica l'istanza da una cartella, es: "MLE/1"
+agents, slot_capacities = load_instance("MLE/10")
+
+print("Numero agenti:", len(agents))
+print("Numero slot:", len(slot_capacities))
+print("Capacità slot:", slot_capacities)
+print("Esempio agente:", [(t.index, t.resource) for t in agents[0].tasks])
 
 
-# Allocazione greedy
-allocation = greedy_allocation_round_robin(agents, slot_capacities)
+# Fase 1: Greedy
+allocation_greedy = greedy_allocation_round_robin(agents, slot_capacities)
 
-
-# Visualizza la soluzione
 print("=== Soluzione Greedy ===")
-print_allocation(allocation, agents)
+print_allocation(allocation_greedy, agents)
 
+# Individua l'agente peggiore
+costs_greedy = evaluate_agent_costs(allocation_greedy, agents)
+worst_id = max(costs_greedy, key=costs_greedy.get)
+print(f"\nAgente peggiore: {worst_id} (costo medio = {costs_greedy[worst_id]:.2f})")
 
-# Costo massimo tra agenti
-costs = evaluate_agent_costs(allocation, agents)
-worst_agent = max(costs, key=costs.get)
-print(f"\nAgente peggiore: {worst_agent} (costo medio = {costs[worst_agent]:.2f})")
+# Fase 2: Ricerca locale sull'agente peggiore
+optimized = local_search_critical_agent(allocation_greedy, agents, slot_capacities)
 
-
-# Local search partendo da soluzione greedy
-optimized = local_search_critical_agent(allocation, agents, slot_capacities)
-
-
-print("\n=== Dopo Ricerca Locale sull'agente peggiore ===")
+print("\n=== Dopo Ricerca Locale ===")
 print_allocation(optimized, agents)
+
+# === Confronto finale ===
+costs_opt = evaluate_agent_costs(optimized, agents)
+worst_opt = max(costs_opt, key=costs_opt.get)
+print(f"\nAgente peggiore dopo local search: {worst_opt} (costo medio = {costs_opt[worst_opt]:.2f})")
