@@ -13,6 +13,11 @@ Ogni istanza è descritta da tre diversi file csv:
 Per risolvere il problema, si divide l’approccio in due fasi:
 - una prima fase di costruzione basata su un algoritmo greedy,
 - una seconda fase seguente di ricerca locale che cerca di migliorare la situazione dell’agente risultato peggiore.
-
+Il progetto è stato progettato per essere eseguito sia su una singola istanza, specificata dall’utente, sia in modalità batch su tutte le istanze disponibili in un’unica esecuzione.
+## Due diverse soluzioni
+Per la fase di assegnazione greedy sono stati concepiti due approcci alternativi, al fine di confrontarne l’efficacia rispetto alla qualità della soluzione iniziale.
+## Risultati
+I risultati sono visibili nella cartella di output, ciascuno per ogni istanza.  
+I costi medi sono confrontati nei due rispettivi file excel.
 ## Autore
 [Gaglione Giulia](https://github.com/giug2)
