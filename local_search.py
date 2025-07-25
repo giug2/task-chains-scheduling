@@ -1,6 +1,8 @@
 import copy
 
-def is_feasible(allocation, agents, slot_capacities):
+
+# === FUNZIONE CHE CALCOLA SE LA SOLUZIONE È AMMISSIBILE ===
+def ammissibile(allocation, agents, slot_capacities):
     """
     Verifica che l'allocazione:
     - non superi la capacità di ogni slot
@@ -25,9 +27,13 @@ def is_feasible(allocation, agents, slot_capacities):
 
     return True
 
+
+# Trova l'agente con il maggior costo
 def find_max_cost_agent(allocation, agents):
     return max(agents, key=lambda a: a.cost(allocation))
 
+
+# === FASE 2: RICERCA LOCALE ===
 def local_search_critical_agent(allocation, agents, slot_capacities, max_iter=1000):
     """
     Ricerca locale che cerca di migliorare il costo medio dell'agente peggiore.
@@ -44,7 +50,7 @@ def local_search_critical_agent(allocation, agents, slot_capacities, max_iter=10
         for task in agent.tasks:
             key = (agent.id, task.index)
             if key not in best_alloc:
-                continue  # task non assegnato → non può essere migliorato
+                continue  # task non assegnato, non può essere migliorato
 
             current_slot = best_alloc[key]
             for new_slot in range(len(slot_capacities)):
@@ -54,7 +60,7 @@ def local_search_critical_agent(allocation, agents, slot_capacities, max_iter=10
                 new_alloc = copy.deepcopy(best_alloc)
                 new_alloc[(agent.id, task.index)] = new_slot
 
-                if not is_feasible(new_alloc, agents, slot_capacities):
+                if not ammissibile(new_alloc, agents, slot_capacities):
                     continue
 
                 new_costs = {a.id: a.cost(new_alloc) for a in agents}
@@ -68,6 +74,6 @@ def local_search_critical_agent(allocation, agents, slot_capacities, max_iter=10
                 break
 
         if not improved:
-            break  # nessun miglioramento possibile
+            break  # nessun miglioramento possibile, esco dal ciclo
 
     return best_alloc

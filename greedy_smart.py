@@ -1,6 +1,8 @@
 from collections import defaultdict
 import copy
 
+
+# === ALGORITMO GREEDY SMART ===
 def smart_greedy_allocation(agents, slot_capacities):
     """
     Greedy intelligente: assegna ogni task allo slot che riduce al minimo
@@ -17,7 +19,7 @@ def smart_greedy_allocation(agents, slot_capacities):
         for agent in agents:
             i = task_pointers[agent.id]
             if i >= len(agent.tasks):
-                continue  # agente completato
+                continue  # agente è stato completato
 
             task = agent.tasks[i]
             prev_slot = allocation.get((agent.id, task.index - 1), -1)
@@ -41,6 +43,6 @@ def smart_greedy_allocation(agents, slot_capacities):
                 any_assigned = True
 
         if not any_assigned:
-            break  # nessun task è stato assegnato in questo giro → fine
+            break  # nessun task è stato assegnato in questo giro, esco dal ciclo
 
     return allocation

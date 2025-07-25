@@ -1,6 +1,7 @@
 from collections import defaultdict
 
 
+# === ALGORITMO GREEDY ROUND ROBIN ===
 def greedy_allocation_round_robin(agents, slot_capacities):
     """
     Assegna i task in modo round-robin: prima tutti i task 1, poi tutti i task 2, ecc.
@@ -25,17 +26,13 @@ def greedy_allocation_round_robin(agents, slot_capacities):
     return allocation
 
 
+# Restituisce agente -> costo medio
 def evaluate_agent_costs(allocation, agents):
-    """
-    Restituisce un dizionario: agente -> costo medio
-    """
     return {a.id: a.cost(allocation) for a in agents}
 
 
+#  Stampa per ogni agente: time slot assegnati (in ordine di task) + costo medio
 def print_allocation(allocation, agents):
-    """
-    Stampa per ogni agente: time slot assegnati (in ordine di task) + costo medio
-    """
     agent_slots = defaultdict(list)
     for (agent_id, task_index), slot in allocation.items():
         agent_slots[agent_id].append((task_index, slot))
@@ -45,3 +42,4 @@ def print_allocation(allocation, agents):
         only_slots = [s for _, s in slots]
         cost = agent.cost(allocation)
         print(f"Agente {agent.id}: {only_slots} (avg cost = {cost:.2f})")
+        
