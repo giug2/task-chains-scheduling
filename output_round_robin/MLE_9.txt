@@ -33,3 +33,5 @@ Agente 10: [0, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7, 8, 9, 8, 11, 12] (avg cost = 5.12)
 Agente 11: [0, 1, 1, 1, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 15, 15, 15, 15, 15, 16, 16, 16, 16, 17, 17, 18] (avg cost = 10.10)
 
 Agente peggiore dopo local search: 11 (costo medio = 10.10)
+
+Coincidenza allocazione Greedy / Locale?  Sì

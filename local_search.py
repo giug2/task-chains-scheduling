@@ -42,7 +42,11 @@ def local_search_critical_agent(allocation, agents, slot_capacities, max_iter=10
         agent = next(a for a in agents if a.id == worst_agent_id)
 
         for task in agent.tasks:
-            current_slot = best_alloc[(agent.id, task.index)]
+            key = (agent.id, task.index)
+            if key not in best_alloc:
+                continue  # task non assegnato → non può essere migliorato
+
+            current_slot = best_alloc[key]
             for new_slot in range(len(slot_capacities)):
                 if new_slot == current_slot:
                     continue

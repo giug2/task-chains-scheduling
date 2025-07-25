@@ -1,0 +1,37 @@
+ Istanza: MLE_3
+- Agenti: 12
+- Slot: 16
+
+=== Soluzione Greedy ===
+Agente 0: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 13, 14, 15] (avg cost = 5.94)
+Agente 1: [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 12, 13, 14, 15] (avg cost = 3.55)
+Agente 2: [0, 1, 2, 3, 4, 5, 7, 8, 10, 11, 12, 13] (avg cost = 6.33)
+Agente 3: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 14, 15] (avg cost = 3.85)
+Agente 4: [0, 1, 2, 3, 5, 6, 7, 8, 9, 11, 12, 13, 14] (avg cost = 7.00)
+Agente 5: [0, 1, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15] (avg cost = 4.50)
+Agente 6: [0, 1, 2, 4, 5, 6, 7, 9, 10, 11, 12, 13] (avg cost = 6.67)
+Agente 7: [0, 1, 2, 3, 4, 5, 7, 9, 10, 11, 12, 13] (avg cost = 6.42)
+Agente 8: [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 13, 14, 15] (avg cost = 7.77)
+Agente 9: [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 13] (avg cost = 6.55)
+Agente 10: [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 13, 14, 15] (avg cost = 4.81)
+Agente 11: [0, 1, 2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15] (avg cost = 6.11)
+
+Agente peggiore: 8 (costo medio = 7.77)
+
+=== Dopo Ricerca Locale ===
+Agente 0: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 13, 14, 15] (avg cost = 5.94)
+Agente 1: [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 12, 13, 14, 15] (avg cost = 3.55)
+Agente 2: [0, 1, 2, 3, 4, 5, 7, 8, 10, 11, 12, 13] (avg cost = 6.33)
+Agente 3: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 12, 13, 14, 15] (avg cost = 3.85)
+Agente 4: [0, 1, 2, 3, 5, 6, 7, 8, 9, 11, 12, 13, 14] (avg cost = 7.00)
+Agente 5: [0, 1, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15] (avg cost = 4.50)
+Agente 6: [0, 1, 2, 4, 5, 6, 7, 9, 10, 11, 12, 13] (avg cost = 6.67)
+Agente 7: [0, 1, 2, 3, 4, 5, 7, 9, 10, 11, 12, 13] (avg cost = 6.42)
+Agente 8: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] (avg cost = 1.00)
+Agente 9: [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 13] (avg cost = 6.55)
+Agente 10: [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 13, 14, 15] (avg cost = 4.81)
+Agente 11: [0, 1, 2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15] (avg cost = 6.11)
+
+Agente peggiore dopo local search: 4 (costo medio = 7.00)
+
+Coincidenza allocazione Greedy / Locale?  No
