@@ -5,7 +5,7 @@ from local_search import local_search_critical_agent
 
 
 # Carica l'istanza da una cartella, es: "MLE/1"
-agents, slot_capacities = load_instance("MLE/7")
+agents, slot_capacities = load_instance("dataset/MLE/1")
 
 print("Numero agenti:", len(agents))
 print("Numero slot:", len(slot_capacities))

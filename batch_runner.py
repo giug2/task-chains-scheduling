@@ -8,7 +8,8 @@ from greedy_v2 import smart_greedy_allocation
 from local_search import local_search_critical_agent
 
 
-OUTPUT_DIR = "output_round_robin"
+INPUT_DIR = "dataset"
+OUTPUT_DIR = "output"
 summary_rows = []
 
 def run_instance_and_capture(path, label):
@@ -68,7 +69,7 @@ def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     for base in ["MLE", "MMLE"]:
         for i in range(1, 11):
-            folder = os.path.join(base, str(i))
+            folder = os.path.join(INPUT_DIR, base, str(i))
             label = f"{base}_{i}"
             output_text = run_instance_and_capture(folder, label)
             out_path = os.path.join(OUTPUT_DIR, f"{label}.txt")
